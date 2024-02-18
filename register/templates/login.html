@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'img/log-icon.png' %}" type="image/x-icon">
+    <title>Login Alertlogger</title>
+    <link rel="stylesheet" href="{% static 'register/styles.css' %}">
+</head>
+<body>
+<section class="login-block">
+    <h1>LOGIN</h1>
+    <form method="post" action="{% url 'register:login' %}">
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+        <div class="error">
+            {{ form.non_field_errors.as_text }}
+        </div>
+        {% endif %}
+        <div class="input-group">
+            <input type="text" class="form-control" name="username" id="username" placeholder="Enter User ID" value="{{ form.username.value | default_if_none:'' }}" required>
+            {% if form.username.errors %}
+                <div class="error">{{ form.username.errors.as_text }}</div>
+            {% endif %}
+        </div>
+        
+        <div class="input-group">
+            <input type="password" class="form-control" name="password" id="password" placeholder="Enter User Password" required>
+            {% if form.password.errors %}
+                <div class="error">{{ form.password.errors.as_text }}</div>
+            {% endif %}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+</section>
+</body>
+</html>
