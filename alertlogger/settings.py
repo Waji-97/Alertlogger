@@ -27,7 +27,7 @@ SECRET_KEY = config('SECRET_KEY', default='django-secret-key')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = ['*']
-
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')  ## Required sometimes when CSRF can't process HTTPS headers
 
 # Application definition
 
