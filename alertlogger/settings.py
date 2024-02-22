@@ -81,6 +81,9 @@ LOGIN_REDIRECT_URL = '/'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# Database Router setting if needed
+# DATABASE_ROUTERS = ['alertlogger.router.DatabaseRouter']
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -88,6 +91,8 @@ DATABASES = {
     }
 }
 
+
+## Add replica DBs
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
@@ -96,7 +101,11 @@ DATABASES = {
 #         'PASSWORD': os.getenv("MYSQL_PASSWORD"),
 #         'HOST': os.getenv("MYSQL_HOST"),
 #         'PORT': int(os.getenv("MYSQL_SERVICE_PORT")),
-#     }
+#     },
+#     'replica_1': {
+#     },
+#     'replica_2': {
+#     },
 # }
 
 
