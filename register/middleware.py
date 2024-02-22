@@ -9,7 +9,7 @@ class LoginRequiredMiddleware:
     def __call__(self, request):
         if not request.user.is_authenticated:
             path = request.path_info.lstrip('/')
-            if not path.startswith('login/') and not path.startswith('admin/'):
+            if not path.startswith('login/') and not path.startswith('admin/') and not path.startswith('alert_receiver/'):
                 return redirect(f"{settings.LOGIN_URL}?next={request.path}")
         response = self.get_response(request)
         return response
